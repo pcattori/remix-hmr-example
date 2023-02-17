@@ -1,51 +1,70 @@
-# Welcome to Remix!
+# Remix HMR Example
 
-- [Remix Docs](https://remix.run/docs)
+This repo shows off Remix HMR + Hot Data Revalidation 🔥
 
-## Development
-
-Start the Remix development asset server and the Express server by running:
+## Run it
 
 ```sh
 npm run dev
 ```
 
-This starts your app in development mode, which will purge the server require cache when Remix rebuilds assets so you don't need a process manager restarting the express server.
+Open up `localhost:3000` to see your app
 
-## Deployment
+## Change things!
 
-First, build your app for production:
+Try changing things and getting hot updates!
 
-```sh
-npm run build
+### Styles
+
+Add a `className` to the `<h1/>` in `app/routes/index.tsx`:
+
+```tsx
+<h1 className="bg-red-600">Welcome to Remix</h1>
 ```
 
-Then run the app in production mode:
+Save the file and see them hot update.
+Feel free to keep changing them!
 
-```sh
-npm start
+### Markup
+
+Add an `<h2/>` to `app/routes/index.tsx`:
+
+```tsx
+<h2>blah</h2>
 ```
 
-Now you'll need to pick a host to deploy it to.
+Or change the content in the `<h1/>`:
 
-### DIY
+```tsx
+<h1 className="bg-red-600">Welcome to HMR + HDR 🔥</h1>
+```
 
-If you're familiar with deploying express applications you should be right at home just make sure to deploy the output of `remix build`
+### Data fetching
 
-- `build/`
-- `public/build/`
+This is where the magic ✨ of HDR comes in.
 
-### Using a Template
+Add a loader:
 
-When you ran `npx create-remix@latest` there were a few choices for hosting. You can run that again to create a new project, then copy over your `app/` folder to the new project that's pre-configured for your target server.
+```tsx
+import { json } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
 
-```sh
-cd ..
-# create a new project, and pick a pre-configured host
-npx create-remix@latest
-cd my-new-remix-app
-# remove the new project's app (not the old one!)
-rm -rf app
-# copy your app over
-cp -R ../my-old-remix-app/app app
+export let loader = () => json({ hello: "world" });
+
+export default function Index() {
+  let { hello } = useLoaderData<typeof loader>();
+  return (
+    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
+      <h1>Welcome to Remix</h1>
+      <h2>{hello}</h2>
+      {/* rest of the code */}
+    </div>
+  );
+}
+```
+
+Then try changing the loader data:
+
+```tsx
+export let loader = () => json({ hello: "planet" });
 ```
