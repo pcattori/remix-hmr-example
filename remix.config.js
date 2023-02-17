@@ -7,5 +7,6 @@ module.exports = {
   // publicPath: "/build/",
   future: {
     unstable_dev: true,
+    unstable_tailwind: true,
   },
 };
