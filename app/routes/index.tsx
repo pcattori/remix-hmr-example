@@ -1,10 +1,11 @@
 export default function Index() {
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
-      <h1>Welcome to Remix</h1>
-      <ul>
+    <main className="space-y-6">
+      <h1 className="text-3xl">Welcome to Remix</h1>
+      <ul className="space-y-2">
         <li>
           <a
+            className="underline"
             target="_blank"
             href="https://remix.run/tutorials/blog"
             rel="noreferrer"
@@ -14,6 +15,7 @@ export default function Index() {
         </li>
         <li>
           <a
+            className="underline"
             target="_blank"
             href="https://remix.run/tutorials/jokes"
             rel="noreferrer"
@@ -22,11 +24,16 @@ export default function Index() {
           </a>
         </li>
         <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
+          <a
+            className="underline"
+            target="_blank"
+            href="https://remix.run/docs"
+            rel="noreferrer"
+          >
             Remix Docs
           </a>
         </li>
       </ul>
-    </div>
+    </main>
   );
 }
