@@ -8,6 +8,7 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 import stylesheet from "~/tailwind.css";
+import Counter from "./components/counter";
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
@@ -27,6 +28,8 @@ export default function App() {
         <Links />
       </head>
       <body className="px-12 py-8">
+        <Counter label="Root" />
+        <hr />
         <Outlet />
         <ScrollRestoration />
         <Scripts />

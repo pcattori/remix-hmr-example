@@ -1,7 +1,10 @@
+import Counter from "~/components/counter";
+
 export default function Index() {
   return (
     <main className="space-y-6">
       <h1 className="text-3xl">Welcome to Remix</h1>
+      <Counter label="Index" />
       <ul className="space-y-2">
         <li>
           <a
