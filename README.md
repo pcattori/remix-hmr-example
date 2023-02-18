@@ -2,6 +2,12 @@
 
 This repo shows off Remix HMR + Hot Data Revalidation 🔥
 
+## Try it out!
+
+```sh
+npx create-remix@0.0.0-experimental-0ec995c53 --template pcattori/remix-hmr-example
+```
+
 ## Run it
 
 ```sh
